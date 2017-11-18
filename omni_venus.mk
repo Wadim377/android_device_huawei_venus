@@ -1,5 +1,4 @@
-#
-# Copyright 2012 The Android Open Source Project
+# Copyright (C) 2015 The CyanogenMod Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,29 +11,13 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-#
 
-# Sample: This is where we'd set a backup provider if we had one
-# $(call inherit-product, device/sample/products/backup_overlay.mk)
-
-# Get the prebuilt list of APNs
+## Specify phone tech before including full_phone
 $(call inherit-product, vendor/omni/config/gsm.mk)
 
-# Inherit from the common Open Source product configuration
-$(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
+$(call inherit-product, device/huawei/venus/full_venus.mk)
 
-# Inherit from our custom product configuration
+# Inherit some common Omni stuff.
 $(call inherit-product, vendor/omni/config/common.mk)
 
-PRODUCT_PACKAGES += \
-    charger_res_images \
-    charger
-
-PRODUCT_COPY_FILES += \
-    device/huawei/venus/kernel:kernel
-
 PRODUCT_NAME := omni_venus
-PRODUCT_DEVICE := venus
-PRODUCT_BRAND := Huawei
-PRODUCT_MODEL := P9 Lite
-PRODUCT_MANUFACTURER := Huawei
